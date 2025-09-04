@@ -8,25 +8,49 @@ namespace ChallengeLab2._4.Model
 {
     internal class Student
     {
-        public required int RollNumber { get; set; }
+        public required int StudentId { get; set; }
         public required string Name { get; set; }
-        public double PhysicsMarks { get; set; }
-        public double ChemistryMarks { get; set; }
-        public double ComputerApplicationMarks { get; set; }
-        public double TotalMarks => PhysicsMarks + ChemistryMarks + ComputerApplicationMarks;
-        public double Percentage => (TotalMarks / 300) * 100;
+        public string StudentInfo { get; set; } = string.Empty;
+        public double PhysicsGrades { get; set; }
+        public double ChemistryGrades { get; set; }
+        public double ComputerApplicationGrades { get; set; }
+        public double TotalGrades => PhysicsGrades + ChemistryGrades + ComputerApplicationGrades;
+        public double Percentage => (TotalGrades / 300) * 100;
+        public double GPA
+        {
+            get
+            {
+                switch (Percentage)
+                {
+                    case >= 90:
+                        return 4.0;
+                    case >= 80:
+                        return 3.0;
+                    case >= 70:
+                        return 2.0;
+                    case >= 60:
+                        return 1.0;
+                    default:
+                        return 0;
+                }
+            }
+        }
         public string Division
         {
             get
             {
                 switch (Percentage)
                 {
-                    case >= 80:
+                    case >= 90:
                         return "First";
-                    case >= 60:
+                    case >= 80:
                         return "Second";
-                    case >= 50:
+                    case >= 70:
                         return "Third";
+                    case >= 60:
+                        return "Fourth";
+                    case >= 50:
+                        return "Fifth";
                     default:
                         return "Fail";
                 }

@@ -12,38 +12,40 @@ namespace ChallengeLab2._4
 
         public static Student ReadStudentDetails()
         {
-            Console.Write("Input the Roll Number of the student: ");
-            int rollNumber = int.Parse(Console.ReadLine() ?? "0");
+            Console.Write("Input the student Id: ");
+            int studentId = int.Parse(Console.ReadLine() ?? "0");
             Console.Write("Input the Name of the Student: ");
             string name = Console.ReadLine() ?? string.Empty;
-            Console.Write("Input the marks of Physics, Chemistry and Computer Application: ");
-            string[] marks = (Console.ReadLine() ?? "0 0 0").Split(' ');
-            double physicsMarks = 0, chemistryMarks = 0, computerApplicationMarks = 0;
-            if (marks.Length == 3)
+            Console.Write("Input student information: ");
+            string studentInfo = Console.ReadLine() ?? string.Empty;
+            Console.Write("Input the grades of Physics, Chemistry and Computer Application: ");
+            string[] grades = (Console.ReadLine() ?? "0 0 0").Split(' ');
+            double physicsGrades = 0, chemistryGrades = 0, computerApplicationGrades = 0;
+            if (grades.Length == 3)
             {
-                physicsMarks = double.Parse(marks[0]);
-                chemistryMarks = double.Parse(marks[1]);
-                computerApplicationMarks = double.Parse(marks[2]);
+                physicsGrades = double.Parse(grades[0]);
+                chemistryGrades = double.Parse(grades[1]);
+                computerApplicationGrades = double.Parse(grades[2]);
             }
             else
             {
-                Console.WriteLine("Invalid input for marks. Please enter three values.");
+                Console.WriteLine("Invalid input for grades. Please enter three values.");
             }
 
             return new Student
             {
-                RollNumber = rollNumber,
+                StudentId = studentId,
                 Name = name,
-                PhysicsMarks = physicsMarks,
-                ChemistryMarks = chemistryMarks,
-                ComputerApplicationMarks = computerApplicationMarks
+                PhysicsGrades = physicsGrades,
+                ChemistryGrades = chemistryGrades,
+                ComputerApplicationGrades = computerApplicationGrades
             };
         }
         public static void DisplayStudentDetails(Model.Student student)
         {
-            Console.WriteLine($"Roll No : {student.RollNumber}\nName of Student : {student.Name}");
-            Console.WriteLine($"Marks in Physics : {student.PhysicsMarks}\nMarks in Chemistry : {student.ChemistryMarks}\nMarks in Computer Application : {student.ComputerApplicationMarks}");
-            Console.WriteLine($"Total Marks = {student.TotalMarks}\nPercentage = {student.Percentage:F2}\nDivision = {student.Division}");
+            Console.WriteLine($"Student Id : {student.StudentId}\nName of the Student : {student.Name}\nStudent Information: {student.StudentInfo}");
+            Console.WriteLine($"Grade in Physics : {student.PhysicsGrades}\nGrade in Chemistry : {student.ChemistryGrades}\nGrade in Computer Application : {student.ComputerApplicationGrades}");
+            Console.WriteLine($"Total Grade = {student.TotalGrades}\nPercentage = {student.Percentage:F2}\nGPA = {student.GPA}\nDivision = {student.Division}");
         }
     }
 }
